@@ -57,7 +57,6 @@ use_datadriven_cv <- function(full_name = "Sarah Arcos",
                               html_location = "nickstrayer.me/datadrivencv/",
                               source_location = "https://github.com/nstrayer/datadrivencv",
                               which_files = "all",
-                              output_dir = getwd(),
                               create_output_dir = FALSE,
                               use_network_logo = TRUE,
                               open_files = TRUE){
@@ -80,9 +79,7 @@ use_datadriven_cv <- function(full_name = "Sarah Arcos",
         source_location = source_location,
         use_network_logo = use_network_logo
       ),
-      output_dir = output_dir,
-      create_output_dir = create_output_dir,
-      open_after_making = open_files
+      output_dir = here::here("02_Report")
     )
   }
 
@@ -90,16 +87,15 @@ use_datadriven_cv <- function(full_name = "Sarah Arcos",
     # Place the css as well
     use_ddcv_template(
       file_name = "dd_cv.css",
-      output_dir = output_dir,
+      output_dir = here::here("03_Templates"),
       create_output_dir
     )
   }
 
-  if("render_cv.r" %in% which_files){
+  if("render.r" %in% which_files){
     use_ddcv_template(
-      file_name = "render_cv.r",
-      output_dir = output_dir,
-      create_output_dir,
+      file_name = "render.r",
+      output_dir = here::here(),
       open_after_making = open_files
     )
   }
@@ -107,7 +103,7 @@ use_datadriven_cv <- function(full_name = "Sarah Arcos",
   if("cv_printing_functions.r" %in% which_files){
     use_ddcv_template(
       file_name = "cv_printing_functions.r",
-      output_dir = output_dir,
+      output_dir = here::here("01_Code"),
       create_output_dir
     )
   }

@@ -13,11 +13,13 @@ use_ddcv_template <- function(
   file_name,
   params = NULL,
   output_file_name = file_name,
-  output_dir = getwd(),
+  output_dir = here::here(),
   create_output_dir = FALSE,
   warn_about_no_change = TRUE,
   open_after_making = FALSE){
   output_dir_missing <- !fs::dir_exists(output_dir)
+
+  file_name <- tolower(file_name)
 
   if(output_dir_missing & create_output_dir){
     fs::dir_create(output_dir)
@@ -26,9 +28,19 @@ use_ddcv_template <- function(
     stop(glue::glue("The requested output directory: {output_dir} doesn't exist. Either set create_output_dir = TRUE or manually make directory."))
   }
 
-
-  template_loc <- fs::path(system.file("templates/", package = "datadrivencv"), file_name)
-  output_loc <- fs::path(output_dir, output_file_name)
+  if(file_name == "dd_cv.css"){
+    template_loc <- here::here("03_Templates", file_name)
+    output_loc <- here::here("03_Templates", file_name)
+  }else if(file_name == "cv.rmd"){
+    template_loc <- here::here("02_Report", file_name)
+    output_loc <- here::here("02_Report", file_name)
+  }else if(file_name == "render.r"){
+    template_loc <- here::here()
+    output_loc <- here::here(file_name)
+  }else if(file_name == "cv_printing_functions.r"){
+    template_loc <- here::here("01_Code", file_name)
+    output_loc <- here::here("01_Code", file_name)
+  }
 
   template_text <- readr::read_file(template_loc)
 
