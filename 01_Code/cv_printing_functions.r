@@ -170,9 +170,9 @@ print_section <- function(cv, section_id, glue_template = "default"){
 
 #' @description Prints out text block identified by a given label.
 #' @param label ID of the text block to print as encoded in `label` column of `text_blocks` table.
-print_text_block <- function(cv, label){
+print_text_block <- function(cv, label, lang = "en"){
   text_block <- dplyr::filter(cv$text_blocks, loc == label) %>%
-    dplyr::pull(text)
+    dplyr::pull(.data[[paste0("text_", lang)]])
 
   strip_res <- sanitize_links(cv, text_block)
 

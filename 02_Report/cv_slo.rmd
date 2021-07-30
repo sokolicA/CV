@@ -1,0 +1,131 @@
+---
+title: "Andrej Sokolič CV"
+author: Andrej Sokolič
+date: "`r Sys.Date()`"
+params:
+  pdf_mode:
+    value: true
+output:
+  pagedown::html_resume:
+    css: [!expr here::here("03_Templates/dd_cv.css"), 'resume']
+    self_contained: true
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(
+  results='asis', 
+  echo = FALSE
+)
+
+library(magrittr) # For the pipe
+source(here::here("01_Code", "cv_printing_functions.r"))
+
+# Read in all data and initialize a CV printer object
+CV <- create_CV_object(
+  data_location = "https://docs.google.com/spreadsheets/d/1yO6oQKQgKz4hNsp94LCWcMYiTb2yowJrLXE1vZrCxUI/edit?usp=sharing",  
+  pdf_mode = params$pdf_mode
+)
+
+```
+
+
+```{r}
+# When in pdf export mode the little dots are unaligned, so fix that with some conditional CSS.
+if(params$pdf_mode) {
+    cat("
+<style>
+:root{
+  --decorator-outer-offset-left: -6.5px;
+}
+</style>")
+}
+```
+
+
+Aside
+================================================================================
+
+```{r}
+# Build interactive network of positions colored by section
+# and connected if they occurred in the same year
+datadrivencv::build_network_logo(CV$entries_data)
+```
+
+
+```{r}
+if(params$pdf_mode){
+  cat("[Ogled CV na spletu.](https://a-s.netlify.app)")
+} else {
+  cat("[<i class='fas fa-download'></i> Prenesite življenjepis v PDF obliki](https://github.com/sokolicA/datadrivencv/raw/master/cv.pdf)")
+}
+```
+
+Kontakt {#contact}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %>% print_contact_info()
+```
+
+Znanja {#skills}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %>% print_text_block("skills_aside", lang = "slo")
+```
+
+```{r}
+# Note the special double pipe so we modify the CV object in place
+CV %<>% print_text_block("human_language", lang = "slo")
+```
+
+<!-- Language Skills {#langskills} -->
+<!-- -------------------------------------------------------------------------------- -->
+
+```{r}
+CV %>% print_skill_bars()
+```
+
+
+
+<!-- Disclaimer {#disclaimer} -->
+<!-- -------------------------------------------------------------------------------- -->
+
+<!-- Created with pagedown. -->
+
+
+Main
+================================================================================
+
+Andrej Sokolič {#title}
+--------------------------------------------------------------------------------
+
+```{r}
+# Note the special double pipe so we modify the CV object in place
+CV %<>% print_text_block("intro", lang = "slo") 
+```
+
+
+
+Izobrazba {data-icon=graduation-cap data-concise=true}
+--------------------------------------------------------------------------------
+
+```{r}
+CV %<>% print_section('izobrazba')
+```
+
+
+Delovne izkušnje {data-icon=suitcase}
+--------------------------------------------------------------------------------
+
+<!-- ::: aside -->
+<!-- ```{r} -->
+<!-- CV %<>% print_text_block('work_experience_aside') -->
+<!-- ``` -->
+<!-- ::: -->
+
+```{r}
+CV %<>% print_section('delo')
+```
+
+

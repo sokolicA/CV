@@ -6,19 +6,39 @@
 # for the HTML and PDF rendering. This exercise is left to the reader.
 
 
-# -------------------------------------------------------------------------
+# English -----------------------------------------------------------------
+
 
 # Knit the HTML version
-rmarkdown::render(here::here("02_Report", "cv.rmd"),
+rmarkdown::render(here::here("02_Report", "cv_en.rmd"),
                   params = list(pdf_mode = FALSE),
-                  output_file = "cv.html")
+                  output_file = "cv_en.html")
 
 # Knit the PDF version to temporary html location
 tmp_html_cv_loc <- fs::file_temp(ext = ".html")
-rmarkdown::render(here::here("02_Report", "cv.rmd"),
+rmarkdown::render(here::here("02_Report", "cv_en.rmd"),
                   params = list(pdf_mode = TRUE),
-                  output_file = tmp_html_cv_loc)
+                  output_file = tmp_html_cv_en_loc)
 
 # Convert to PDF using Pagedown
-pagedown::chrome_print(input = tmp_html_cv_loc,
-                       output = "cv.pdf")
+pagedown::chrome_print(input = tmp_html_cv_en_loc,
+                       output = "cv_en.pdf")
+
+
+
+# Slovenian ---------------------------------------------------------------
+
+# Knit the HTML version
+rmarkdown::render(here::here("02_Report", "cv_slo.rmd"),
+                  params = list(pdf_mode = FALSE),
+                  output_file = "cv_slo.html")
+
+# Knit the PDF version to temporary html location
+tmp_html_cv_loc <- fs::file_temp(ext = ".html")
+rmarkdown::render(here::here("02_Report", "cv_slo.rmd"),
+                  params = list(pdf_mode = TRUE),
+                  output_file = tmp_html_cv_slo_loc)
+
+# Convert to PDF using Pagedown
+pagedown::chrome_print(input = tmp_html_cv_slo_loc,
+                       output = "cv_slo.pdf")
