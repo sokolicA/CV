@@ -56,7 +56,7 @@ datadrivencv::build_network_logo(CV$entries_data)
 if(params$pdf_mode){
   cat("[Ogled CV na spletu.](https://a-s.netlify.app)")
 } else {
-  cat("[<i class='fas fa-download'></i> Prenesite življenjepis v PDF obliki](https://github.com/sokolicA/datadrivencv/raw/master/cv.pdf)")
+  cat("[<i class='fas fa-download'></i> Prenesite življenjepis v PDF obliki](https://github.com/sokolicA/datadrivencv/raw/master/02_Report/cv_slo.pdf)")
 }
 ```
 
@@ -88,11 +88,14 @@ CV %>% print_skill_bars()
 
 
 
-<!-- Disclaimer {#disclaimer} -->
-<!-- -------------------------------------------------------------------------------- -->
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
 
-<!-- Created with pagedown. -->
+Izdelano s [**pagedown**](https://github.com/rstudio/pagedown). 
 
+Izvorna koda je dostopna na [on github.com/sokolica/CV](https://github.com/sokolicA/CV).
+
+Nazadnje posodobljeno `r Sys.Date()`.
 
 Main
 ================================================================================

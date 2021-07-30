@@ -4,7 +4,7 @@ author: Andrej Sokolič
 date: "`r Sys.Date()`"
 params:
   pdf_mode:
-    value: true
+    value: false
 output:
   pagedown::html_resume:
     css: [!expr here::here("03_Templates/dd_cv.css"), 'resume']
@@ -56,7 +56,7 @@ datadrivencv::build_network_logo(CV$entries_data)
 if(params$pdf_mode){
   cat("[View this CV online.](https://a-s.netlify.app)")
 } else {
-  cat("[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/sokolicA/datadrivencv/raw/master/cv.pdf)")
+  cat("[<i class='fas fa-download'></i> Download a PDF of this CV](https://github.com/sokolicA/datadrivencv/raw/master/02_Report/cv_en.pdf)")
 }
 ```
 
@@ -88,10 +88,14 @@ CV %>% print_skill_bars()
 
 
 
-<!-- Disclaimer {#disclaimer} -->
-<!-- -------------------------------------------------------------------------------- -->
+Disclaimer {#disclaimer}
+--------------------------------------------------------------------------------
 
-<!-- Created with pagedown. -->
+Made with the R package [**pagedown**](https://github.com/rstudio/pagedown). 
+
+The source code is available [on github.com/sokolica/CV](https://github.com/sokolicA/CV).
+
+Last updated on `r Sys.Date()`.
 
 
 Main
