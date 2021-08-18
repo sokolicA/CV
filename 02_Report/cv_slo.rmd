@@ -91,11 +91,12 @@ CV %>% print_skill_bars()
 Disclaimer {#disclaimer}
 --------------------------------------------------------------------------------
 
-Izdelano s [**pagedown**](https://github.com/rstudio/pagedown). 
+Izdelano z uporabo [**pagedown**](https://github.com/rstudio/pagedown). 
 
-Izvorna koda je dostopna na [on github.com/sokolica/CV](https://github.com/sokolicA/CV).
+<!-- Izvorna koda je dostopna na [on github.com/sokolica/CV](https://github.com/sokolicA/CV). -->
 
-Nazadnje posodobljeno `r Sys.Date()`.
+Nazadnje posodobljeno 
+`r format(Sys.Date(), format = "%d.%m.%Y")`.
 
 Main
 ================================================================================

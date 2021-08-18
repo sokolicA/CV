@@ -93,7 +93,7 @@ Disclaimer {#disclaimer}
 
 Made with the R package [**pagedown**](https://github.com/rstudio/pagedown). 
 
-The source code is available [on github.com/sokolica/CV](https://github.com/sokolicA/CV).
+<!-- The source code is available [on github.com/sokolica/CV](https://github.com/sokolicA/CV). -->
 
 Last updated on `r Sys.Date()`.
 
