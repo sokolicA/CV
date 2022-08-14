@@ -48,7 +48,8 @@ Aside
 ```{r}
 # Build interactive network of positions colored by section
 # and connected if they occurred in the same year
-datadrivencv::build_network_logo(CV$entries_data)
+source(here("01_Code", "build_network_logo.R"))
+build_network_logo(CV$entries_data)
 ```
 
 
@@ -91,12 +92,16 @@ CV %>% print_skill_bars()
 Disclaimer {#disclaimer}
 --------------------------------------------------------------------------------
 
-Izdelano z uporabo [**pagedown**](https://github.com/rstudio/pagedown). 
+<!-- Izdelano z uporabo [**pagedown**](https://github.com/rstudio/pagedown).  -->
 
 <!-- Izvorna koda je dostopna na [on github.com/sokolica/CV](https://github.com/sokolicA/CV). -->
 
-Nazadnje posodobljeno 
-`r format(Sys.Date(), format = "%d.%m.%Y")`.
+\
+
+\
+
+Nazadnje posodobljeno \
+`r format(Sys.Date(), format = "%d. %m. %Y")`.
 
 Main
 ================================================================================

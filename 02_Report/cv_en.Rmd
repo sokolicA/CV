@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
   echo = FALSE
 )
 
+library(here)
 library(magrittr) # For the pipe
 source(here::here("01_Code", "cv_printing_functions.r"))
 
@@ -48,7 +49,8 @@ Aside
 ```{r}
 # Build interactive network of positions colored by section
 # and connected if they occurred in the same year
-datadrivencv::build_network_logo(CV$entries_data)
+source(here("01_Code", "build_network_logo.R"))
+build_network_logo(CV$entries_data)
 ```
 
 
@@ -91,7 +93,8 @@ CV %>% print_skill_bars()
 Disclaimer {#disclaimer}
 --------------------------------------------------------------------------------
 
-Made with the R package [**pagedown**](https://github.com/rstudio/pagedown). 
+
+<!-- Made with the R package [**pagedown**](https://github.com/rstudio/pagedown).  -->
 
 <!-- The source code is available [on github.com/sokolica/CV](https://github.com/sokolicA/CV). -->
 
