@@ -7,7 +7,7 @@ params:
     value: false
 output:
   pagedown::html_resume:
-    css: [!expr here::here("03_Templates/dd_cv.css"), 'resume']
+    css: [!expr here::here("03_templates/dd_cv.css"), 'resume']
     self_contained: true
 ---
 
@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 
 library(here)
 library(magrittr) # For the pipe
-source(here::here("01_Code", "cv_printing_functions.r"))
+source(here::here("01_scripts", "cv_printing_functions.r"))
 
 # Read in all data and initialize a CV printer object
 CV <- create_CV_object(
@@ -49,7 +49,7 @@ Aside
 ```{r}
 # Build interactive network of positions colored by section
 # and connected if they occurred in the same year
-source(here("01_Code", "build_network_logo.R"))
+source(here("01_scripts", "build_network_logo.R"))
 build_network_logo(CV$entries_data)
 ```
 
